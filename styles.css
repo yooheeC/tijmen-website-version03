@@ -90,10 +90,6 @@ img+p {
 }
 
 button {
-    z-index: 10;
-    display: none;
-    right: 0;
-    position: fixed;
     background: none;
     border: none;
     padding: 0;
@@ -103,5 +99,50 @@ button {
     font-family: inherit;
     -webkit-appearance: none;
     appearance: none;
+}
+
+.popup-btn {
+    z-index: 10;
+    display: none;
+    right: 0;
+    position: fixed;
+}
+
+.intro-popup {
+    position: fixed;
+    width: 20vw;
+    z-index: 200;
+    top: 10%;
+    left: 60%;
+    cursor: all-scroll;
+}
+
+.intro-popup img {
+    width: 100%;
+    display: block;
+    cursor: all-scroll;
+}
+
+.intro-popup-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 300;
+}
+
+
+.intro-popup a {
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.intro-popup a::before {
+    content: '';
+    position: absolute;
+    left: 25%;
+    width: 50%;
+    height: 100%;
+    z-index: 10;
     cursor: pointer;
 }

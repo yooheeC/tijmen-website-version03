@@ -1,5 +1,5 @@
 if (window.innerWidth > 768) {
-    document.querySelectorAll('img').forEach(img => {
+    document.querySelectorAll('.imgcolumn img').forEach(img => {
         img.addEventListener('mouseover', () => {
             document.body.style.backgroundImage = `url('${img.src}')`;
             document.body.style.backgroundSize = `auto ${window.innerHeight}px`;
