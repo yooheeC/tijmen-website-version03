@@ -1,16 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
+const introClose = document.querySelector('.intro-popup-close');
+const popup = document.querySelector('.intro-popup');
+const bioBtn = document.querySelector('.bio');
+const biographyContainer = document.querySelector('.biography-container');
+const filters = document.querySelector('.filters');
 
-    const btn = document.querySelector('.popup-btn');
-    const imgcolumn = document.querySelector('.imgcolumn');
+bioBtn.addEventListener('click', () => {
+    biographyContainer.classList.toggle('hidden');
+    bioBtn.classList.toggle('active');
+    filters.classList.toggle('hidden');
 
-    btn.addEventListener('click', () => {
-        imgcolumn.classList.toggle('open');
-        btn.textContent = imgcolumn.classList.contains('open') ? 'hide' : 'show';
-    });
+});
 
-    const introClose = document.querySelector('.intro-popup-close');
-    const popup = document.querySelector('.intro-popup');
-
+if (introClose && popup) {
     introClose.addEventListener('click', () => {
         popup.style.display = 'none';
     });
@@ -55,5 +56,4 @@ document.addEventListener('DOMContentLoaded', () => {
             hasMoved = false;
         }
     });
-
-});
+}
