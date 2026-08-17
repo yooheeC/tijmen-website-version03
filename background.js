@@ -10,7 +10,8 @@ const imagePool = [
     'background-sources/source-09.jpg',
     'background-sources/source-10.jpg',
     'background-sources/source-11.jpg',
-    'background-sources/source-12.jpg'
+    'background-sources/source-12.jpg',
+    'background-sources/source-13.jpg'
 ];
 
 function getRandomImages() {
