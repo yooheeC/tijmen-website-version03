@@ -82,6 +82,10 @@ b {
     width: 40%;
 }
 
+.imgcolumn::-webkit-scrollbar {
+    display: none;
+  }
+
 .bio.active {
     text-decoration: underline;
   }
