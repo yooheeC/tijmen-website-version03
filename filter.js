@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
             rowElements.forEach(el => {
                 el.addEventListener('mouseover', () => {
                     rowElements.forEach(e => {
-                        e.style.color = 'red';
-                        e.querySelectorAll('a').forEach(a => a.style.color = 'red');
+                        e.style.color = 'blue';
+                        e.querySelectorAll('a').forEach(a => a.style.color = 'blue');
                     });
                 });
                 el.addEventListener('mouseout', () => {

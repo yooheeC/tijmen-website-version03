@@ -23,7 +23,7 @@ const items = [
         col1: "Exhibition",
         col2: "",
         col3: '<i>Motherboard</i>, Hal West, (May 2026), Co-curator.',
-        link: "",
+        link: "https://voxpop.uva.nl/en/content/events/2026/02/printed-matters.html?origin=YA3gQulCQzOXnGh00amjzQ",
         description: "A small exhibition for the launch of Simulacrum Magazine 34, no. 2 with artworks by Noor Boiten, Sjoerd Willemsen and a performance by Asli Nur Mahmutoglu."
     },
 
