@@ -45,7 +45,12 @@ body {
     position: absolute;
     top: 1vw;
     z-index: 260;
+    pointer-events: none;
 }
+
+.topbar button {
+    pointer-events: auto;
+  }
 
 .topbar .name-btn {
     position: fixed;
