@@ -3,7 +3,7 @@ const items = [
         date: "2026",
         col1: "Writing",
         col2: "Editorial",
-        col3: `"Ecstasy", Simulacrum Magazine  34, no. 4  (2026). `,
+        col3: `\u201cEcstasy\u201d, Simulacrum Magazine  34, no. 4  (2026). `,
         link: "",
         description: "",
     },
@@ -31,7 +31,7 @@ const items = [
         date: "2026",
         col1: "Writing",
         col2: "Editorial",
-        col3: '"Little man, what now?", <i>Simulacrum Magazine</i>, vol. 34, no. 3 (forthcoming, 2026).',
+        col3: '\u201cLittle man, what now?\u201d, <i>Simulacrum Magazine</i>, vol. 34, no. 3 (forthcoming, 2026).',
         link: "",
         description: ""
     },
@@ -39,7 +39,7 @@ const items = [
         date: "2026",
         col1: "Writing",
         col2: "Editorial",
-        col3: '"Motherboard", <i>Simulacrum Magazine</i>, vol. 34, no. 2 (forthcoming, 2026).',
+        col3: '\u201cMotherboard\u201d, <i>Simulacrum Magazine</i>, vol. 34, no. 2 (forthcoming, 2026).',
         link: "",
         description: ""
     },
@@ -55,7 +55,7 @@ const items = [
         date: "2026",
         col1: "Writing",
         col2: "Criticism",
-        col3: 'T. ter Keurs, "Danh Vo. πνεῦμα (Ἔλισσα)," review of <i>Danh Vo: πνεῦμα (Ἔλισσα)</i> (Stedelijk Museum Amsterdam, 2026), <i>De Witte Raaf</i>, 2026.',
+        col3: 'T. ter Keurs, \u201cDanh Vo. πνεῦμα (Ἔλισσα),\u201d review of  <i>Danh Vo: πνεῦμα (Ἔλισσα)</i> (Stedelijk Museum Amsterdam, 2026), <i>De Witte Raaf</i>, 2026.',
         link: "",
         description: ""
     },
@@ -63,7 +63,7 @@ const items = [
         date: "2026",
         col1: "Writing",
         col2: "Criticism",
-        col3: 'T. ter Keurs, "Minne Kersten. There\'s Always Another Twist," review of <i>Minne Kersten: There\'s Always Another Twist</i> (De Oude Kerk Amsterdam, 2025–2026), <i>De Witte Raaf</i>, 2026.',
+        col3: 'T. ter Keurs, \u201cMinne Kersten. There\u2019s Always Another Twist,\u201d review of <i>Minne Kersten: There\u2019s Always Another Twist</i> (De Oude Kerk Amsterdam, 2025–2026), <i>De Witte Raaf</i>, 2026.',
         link: "https://www.dewitteraaf.be/artikel/minne-kersten-theres-always-another-twist/",
         description: ""
     },
@@ -71,7 +71,7 @@ const items = [
         date: "2026",
         col1: "Writing",
         col2: "Editorial",
-        col3: '"Drift(ing)", <i>Simulacrum Magazine</i>, vol. 34, no. 1 (2026).',
+        col3: '\u201cDrift(ing)\u201d, <i>Simulacrum Magazine</i>, vol. 34, no. 1 (2026).',
         link: "",
         description: ""
     },

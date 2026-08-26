@@ -57,3 +57,42 @@ if (introClose && popup) {
         }
     });
 }
+
+document.querySelectorAll('.topbar button, .filter-btn, a').forEach(el => {
+    el.addEventListener('click', () => {
+        el.classList.toggle('clicked');
+    });
+});
+
+const imgcolumn = document.querySelector('.imgcolumn');
+
+// 이미지 무한 반복
+const imgs = [...imgcolumn.querySelectorAll('img')];
+imgs.forEach(img => {
+    const clone = img.cloneNode(true);
+    imgcolumn.appendChild(clone);
+});
+
+// 클릭 방향에 따라 이동
+imgcolumn.addEventListener('click', (e) => {
+    const rect = imgcolumn.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+
+    if (clickX < rect.width / 2) {
+        imgcolumn.scrollBy({ left: -window.innerWidth * 0.3, behavior: 'smooth' });
+    } else {
+        imgcolumn.scrollBy({ left: window.innerWidth * 0.3, behavior: 'smooth' });
+    }
+});
+
+// 커서 방향 표시
+imgcolumn.addEventListener('mousemove', (e) => {
+    const rect = imgcolumn.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+
+    if (clickX < rect.width / 2) {
+        imgcolumn.style.cursor = 'w-resize';
+    } else {
+        imgcolumn.style.cursor = 'e-resize';
+    }
+});

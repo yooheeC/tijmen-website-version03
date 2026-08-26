@@ -1,61 +1,65 @@
-const imagePool = [
-    'background-sources/source-01.jpg',
-    'background-sources/source-02.jpg',
-    'background-sources/source-03.jpg',
-    'background-sources/source-04.jpg',
-    'background-sources/source-05.jpg',
-    'background-sources/source-06.jpg',
-    'background-sources/source-07.jpg',
-    'background-sources/source-08.jpg',
-    'background-sources/source-09.jpg',
-    'background-sources/source-10.jpg',
-    'background-sources/source-11.jpg',
-    'background-sources/source-12.jpg',
-    'background-sources/source-13.jpg'
-];
+const categoryImages = {
+    exhibition: 'background-sources/source-01.jpg',
+    editorial: 'background-sources/source-02.jpg',
+    criticism: 'background-sources/source-03.jpg',
+    essays: 'background-sources/source-04.jpg',
+    commissioned: 'background-sources/source-10.jpg',
+};
 
-function getRandomImages() {
-    const count = Math.floor(Math.random() * 3) + 1;
-    const shuffled = [...imagePool].sort(() => Math.random() - 0.5);
-    return shuffled.slice(0, count);
+function preloadImages() {
+    Object.values(categoryImages).forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
 }
 
-function getRandomPosition() {
-    const x = Math.floor(Math.random() * 80);
-    const y = Math.floor(Math.random() * 80);
-    return `${x}% ${y}%`;
+function showBackgroundImage(filter) {
+    const img = categoryImages[filter];
+
+    if (!img) {
+        clearBackgroundImage();
+        return;
+    }
+
+    if (Array.isArray(img)) {
+        document.body.style.setProperty('--bg-image', img.map(i => `url('${i}')`).join(', '));
+        document.body.style.setProperty('--bg-size', img.map(() => `auto ${window.innerHeight}px`).join(', '));
+        document.body.style.setProperty('--bg-position', img.map(() => 'center').join(', '));
+        document.body.style.setProperty('--bg-blend', img.map(() => 'multiply').join(', '));
+    } else {
+        document.body.style.setProperty('--bg-image', `url('${img}')`);
+        document.body.style.setProperty('--bg-size', `auto ${window.innerHeight}px`);
+        document.body.style.setProperty('--bg-position', 'center');
+        document.body.style.setProperty('--bg-blend', 'normal');
+    }
 }
 
-function showBackgroundImages() {
-    const images = getRandomImages();
-
-    document.body.style.setProperty('--bg-image', images.map(img => `url('${img}')`).join(', '));
-    document.body.style.setProperty('--bg-position', images.map(() => getRandomPosition()).join(', '));
-    document.body.style.setProperty('--bg-size', images.map(() => `auto ${window.innerHeight}px`).join(', '));
-    document.body.style.setProperty('--bg-blend', images.map(() => 'multiply').join(', '));
-}
-
-function clearBackgroundImages() {
+function clearBackgroundImage() {
     document.body.style.setProperty('--bg-image', 'none');
 }
+
+let activeFilter = 'all';
 
 if (window.innerWidth > 768) {
     document.addEventListener('DOMContentLoaded', () => {
 
-        // imgcolumn 이미지 hover
+        preloadImages();
+
         document.querySelectorAll('.imgcolumn img').forEach(img => {
             img.addEventListener('load', () => {
                 img.addEventListener('mouseover', () => {
-                    document.body.style.backgroundImage = `url('${img.src}')`;
-                    document.body.style.backgroundSize = `auto ${window.innerHeight}px`;
-                    document.body.style.backgroundPosition = 'center top';
-                    document.body.style.backgroundRepeat = 'no-repeat';
-                    document.body.style.backgroundAttachment = 'fixed';
-                    document.body.style.backgroundBlendMode = 'normal';
+                    const biographyContainer = document.querySelector('.biography-container');
+                    biographyContainer.style.backgroundImage = `url('${img.src}')`;
+                    biographyContainer.style.backgroundSize = `auto ${window.innerHeight}px`;
+                    biographyContainer.style.backgroundPosition = 'center top';
+                    biographyContainer.style.backgroundRepeat = 'no-repeat';
+                    biographyContainer.style.backgroundAttachment = 'fixed';
+                    biographyContainer.style.backgroundBlendMode = 'normal';
                 });
 
                 img.addEventListener('mouseout', () => {
-                    document.body.style.backgroundImage = 'none';
+                    const biographyContainer = document.querySelector('.biography-container');
+                    biographyContainer.style.backgroundImage = 'none';
                 });
             });
 
@@ -64,11 +68,16 @@ if (window.innerWidth > 768) {
             }
         });
 
-        // 리스트 요소 hover
-        document.querySelectorAll('.col1, .col2, .col3').forEach(el => {
-            el.addEventListener('mouseover', showBackgroundImages);
-            el.addEventListener('mouseout', clearBackgroundImages);
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('mouseover', () => {
+                showBackgroundImage(btn.dataset.filter);
+            });
+
+            btn.addEventListener('mouseout', () => {
+                showBackgroundImage(activeFilter);
+            });
         });
 
+        showBackgroundImage(activeFilter);
     });
 }
