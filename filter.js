@@ -23,13 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
       span3.innerHTML = item.col3;
 
       const empty1 = document.createElement('span');
-      empty1.className = 'col1 hidden';
+      empty1.className = 'col1';
+      empty1.style.visibility = 'hidden';
 
       const empty2 = document.createElement('span');
-      empty2.className = 'col2 hidden';
+      empty2.className = 'col2';
+      empty2.style.visibility = 'hidden';
 
       const linkSpan = document.createElement('span');
-      linkSpan.className = 'col-link hidden';
+      linkSpan.className = 'col-link';
+      linkSpan.style.maxHeight = '0';
+      linkSpan.style.overflow = 'hidden';
+      linkSpan.style.visibility = 'hidden';
+      linkSpan.style.transition = 'max-height 0.4s ease';
 
       let content = '';
       if (item.description) content += `<p>${item.description}</p>`;
@@ -62,9 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       span3.addEventListener('click', () => {
-        empty1.classList.toggle('hidden');
-        empty2.classList.toggle('hidden');
-        linkSpan.classList.toggle('hidden');
+        if (empty1.style.visibility === 'hidden') {
+          empty1.style.visibility = 'visible';
+          empty2.style.visibility = 'visible';
+          linkSpan.style.visibility = 'visible';
+          linkSpan.style.overflow = 'hidden';
+          linkSpan.style.maxHeight = '1000px';
+        } else {
+          empty1.style.visibility = 'hidden';
+          empty2.style.visibility = 'hidden';
+          linkSpan.style.maxHeight = '0';
+          linkSpan.style.overflow = 'hidden';
+          linkSpan.style.visibility = 'hidden';
+        }
       });
 
       grid.appendChild(span1);
@@ -77,8 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (window.innerWidth > 768) {
       document.querySelectorAll('.col1, .col2, .col3').forEach(el => {
-        el.addEventListener('mouseover', showBackgroundImage);
-        el.addEventListener('mouseout', clearBackgroundImage);
+        el.addEventListener('mouseover', () => showBackgroundImage(window.activeFilter));
+        el.addEventListener('mouseout', () => showBackgroundImage(window.activeFilter));
       });
     }
   }
@@ -89,6 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      window.activeFilter = btn.dataset.filter;
+      showBackgroundImage(window.activeFilter);
       renderItems(btn.dataset.filter);
     });
   });

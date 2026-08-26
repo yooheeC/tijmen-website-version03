@@ -38,7 +38,7 @@ function clearBackgroundImage() {
     document.body.style.setProperty('--bg-image', 'none');
 }
 
-let activeFilter = 'all';
+window.activeFilter = 'all';
 
 if (window.innerWidth > 768) {
     document.addEventListener('DOMContentLoaded', () => {
@@ -74,10 +74,10 @@ if (window.innerWidth > 768) {
             });
 
             btn.addEventListener('mouseout', () => {
-                showBackgroundImage(activeFilter);
+                showBackgroundImage(window.activeFilter);
             });
         });
 
-        showBackgroundImage(activeFilter);
+        showBackgroundImage(window.activeFilter);
     });
 }
